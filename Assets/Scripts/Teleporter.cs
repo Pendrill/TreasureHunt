@@ -9,8 +9,8 @@ public class Teleporter : MonoBehaviour {
 	public int locationZ;
 
 	void OnTriggerEnter2D (Collider2D player){
-		player.GetComponent<Transform> ().position = new Vector3 (locationX, locationY, locationZ);
-		//player.gameObject.transform.position = new Vector3 (locationX, locationY, locationZ);
+		//player.GetComponent<Transform> ().position = new Vector3 (locationX, locationY, locationZ);
+		player.gameObject.transform.position = new Vector3 (locationX, locationY, locationZ);
 
 	}
 }
