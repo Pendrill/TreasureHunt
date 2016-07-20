@@ -25,4 +25,8 @@ public class EatPills : MonoBehaviour {
 
 
 	}
+	void OnTriggerExit2D(Collider2D player){
+		panelUI.SetActive (false);
+		textUI.text = "";
+	}
 }
