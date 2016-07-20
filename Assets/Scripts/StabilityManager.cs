@@ -24,6 +24,11 @@ public class StabilityManager : MonoBehaviour {
 		}
 
 	}
+	public void gainStability (int health){
+		currentStability += health;
+		currentStability = Mathf.Clamp (currentStability, minStability, maxStability);
+	}
+
 	public int getStability(){
 		return currentStability;
 	}
