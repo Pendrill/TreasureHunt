@@ -12,17 +12,16 @@ public class EatPills : MonoBehaviour {
 		panelUI.SetActive (true);
 		textUI.text = message;
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			if (player.GetComponent<HealthManager> ().getHealth >= 75) {
+			if (player.GetComponent<HealthManager> ().getHealth () >= 75) {
 				player.GetComponent<StabilityManager> ().gainStability (30);
+			} else if (player.GetComponent<HealthManager> ().getHealth () >= 50) {
+				player.GetComponent<StabilityManager> ().gainStability (15);
+			} else if (player.GetComponent<HealthManager> ().getHealth () >= 25) {
+				player.GetComponent<StabilityManager> ().gainStability (5);
+			} else {
+				player.GetComponent<StabilityManager> ().gainStability (1);
 			}
-		} else if (player.GetComponent<HealthManager> ().getHealth >= 50) {
-			player.GetComponent<StabilityManager> ().gainStability (15);
-		} else if (player.GetComponent<HealthManager> ().getHealth >= 25) {
-			player.GetComponent<StabilityManager> ().gainStability (5);
-		} else  {
-			player.GetComponent<StabilityManager> ().gainStability (15);
 		}
-
 
 
 	}
