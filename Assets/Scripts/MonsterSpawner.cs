@@ -7,22 +7,29 @@ public class MonsterSpawner : MonoBehaviour {
 	public Vector3 roomCenter;
 	private int totalMonsters;
 	private Vector3 roomCenterOG;
+	public int positionXY;
+	public GameObject enemy1;
+	int count;
 
 	void Start(){
-		roomCenterOG = roomCenter;
+		//roomCenterOG = roomCenter;
+		count = 0;
 	}
 
 	void Update(){
-		roomCenter = roomCenterOG;
+		//roomCenter = roomCenterOG;
 	}
 
 	void OnTriggerEnter2D(Collider2D player){
+		if (count == 0) {
+			firstEnemyEnabled ();
+		}
 		totalMonsters = numberOfMonsters ();
 		while (totalMonsters > 0) {
 			//Instantiate the monster;
 			//determine where they are based on player location
 			//roomCenter += new Vector3 (Random.Range(-350,350),Random.Range(-350,350),0);
-			Instantiate (monsters, roomCenter+ new Vector3 (Random.Range(-350,350),Random.Range(-350,350),0), Quaternion.identity);
+			Instantiate (monsters, roomCenter+ new Vector3 (Random.Range(-positionXY, positionXY),Random.Range(-positionXY,positionXY),0), Quaternion.identity);
 			totalMonsters-=1;
 		}
 	}
@@ -42,5 +49,9 @@ public class MonsterSpawner : MonoBehaviour {
 			return 7;
 		}
 
+	}
+	void firstEnemyEnabled(){
+		enemy1.SetActive (true);
+		count++;
 	}
 }
