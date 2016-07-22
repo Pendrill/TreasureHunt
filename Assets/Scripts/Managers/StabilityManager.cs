@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class StabilityManager : MonoBehaviour {
 
 	public int currentStability;
 	public int maxStability;
 	public int minStability;
+	public Text sanity;
 	// Use this for initialization
 	void Start () {
 		currentStability = maxStability;
@@ -13,7 +15,7 @@ public class StabilityManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		sanity.text = "Sanity:  " + currentStability;
 	}
 	public void loseStability (int damage){
 		currentStability -= damage;
