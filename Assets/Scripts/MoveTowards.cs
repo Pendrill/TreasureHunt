@@ -14,7 +14,7 @@ public class MoveTowards : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		
 		float step = speed*Time.deltaTime;
 		transform.position = Vector3.MoveTowards (transform.position, player.position, step);
