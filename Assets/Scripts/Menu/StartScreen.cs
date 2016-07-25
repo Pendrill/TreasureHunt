@@ -10,9 +10,9 @@ public class StartScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			SceneManager.LoadScene (1);
-		} else if (Input.GetKey (KeyCode.R)) {
+		} else if (Input.GetKeyDown (KeyCode.R)) {
 			SceneManager.LoadScene (2);
 		}
 	}
