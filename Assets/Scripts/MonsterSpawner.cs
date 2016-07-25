@@ -21,20 +21,30 @@ public class MonsterSpawner : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D player){
-		if (count == 0) {
-			firstEnemyEnabled ();
-		}
-		totalMonsters = numberOfMonsters ();
-		while (totalMonsters > 0) {
-			//Instantiate the monster;
-			//determine where they are based on player location
-			//roomCenter += new Vector3 (Random.Range(-350,350),Random.Range(-350,350),0);
-			Instantiate (monsters, roomCenter+ new Vector3 (Random.Range(-positionXY, positionXY),Random.Range(-positionXY,positionXY),0), Quaternion.identity);
-			totalMonsters-=1;
+		if (player.GetComponent<MoveBullet> () != null) {
+			//Destroy (player.gameObject);
+
+		} else {
+			if (count == 0) {
+				firstEnemyEnabled ();
+			}
+			totalMonsters = numberOfMonsters ();
+			while (totalMonsters > 0) {
+				//Instantiate the monster;
+				//determine where they are based on player location
+				//roomCenter += new Vector3 (Random.Range(-350,350),Random.Range(-350,350),0);
+				Instantiate (monsters, roomCenter + new Vector3 (Random.Range (-positionXY, positionXY), Random.Range (-positionXY, positionXY), 0), Quaternion.identity);
+				totalMonsters -= 1;
+			}
 		}
 	}
 	void OnTriggerExit2D(Collider2D player){
-		Destroy (this);
+		if (player.GetComponent<MoveBullet> () != null) {
+			//Destroy (player.gameObject);
+
+		} else {
+			Destroy (this);
+		}
 	}
 	public int numberOfMonsters(){
 		if (player.GetComponent<StabilityManager> ().getStability () == 100) {

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class IgnorePills : MonoBehaviour {
-
+	public GameObject ThePills;
 	void OnTriggerEnter2D( Collider2D player){
 		if (player.GetComponent<HealthManager> ().getHealth () >= 75) {
 			player.GetComponent<StabilityManager> ().loseStability (5);
@@ -13,6 +13,10 @@ public class IgnorePills : MonoBehaviour {
 		} else {
 			player.GetComponent<StabilityManager> ().loseStability (30);
 		}
-
+		Destroy (ThePills.gameObject);
 	}
+	void OnTriggerExit2D(Collider2D player){
+		Destroy (this.gameObject);
+	}
+
 }
