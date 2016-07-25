@@ -9,9 +9,12 @@ public class EatPills : MonoBehaviour {
 
 	//The amount of stability the player can regain will be determined by their current health.
 	void OnTriggerEnter2D(Collider2D player){
-		panelUI.SetActive (true);
-		textUI.text = message;
-		/*(if (Input.GetKeyDown (KeyCode.Space)) {
+		if (player.GetComponent<MoveBullet> () != null) {
+			Destroy (player.gameObject);
+		} else {
+			panelUI.SetActive (true);
+			textUI.text = message;
+			/*(if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("working?");
 			if (player.GetComponent<HealthManager> ().getHealth () >= 70) {
 				player.GetComponent<StabilityManager> ().gainStability (30);
@@ -25,7 +28,7 @@ public class EatPills : MonoBehaviour {
 			Destroy (this.gameObject);
 		}*/
 
-
+		}
 	}
 	void OnTriggerStay2D(Collider2D player){
 		if (Input.GetKeyDown (KeyCode.Space)) {
