@@ -12,7 +12,7 @@ public class EatPills : MonoBehaviour {
 	public bool changePath = false;
 	public GameObject pathOne;
 	public GameObject pathTwo;
-
+	public bool lastPill = false;
 	//The amount of stability the player can regain will be determined by their current health.
 	void OnTriggerEnter2D(Collider2D player){
 		if (player.GetComponent<MoveBullet> () != null) {
@@ -48,6 +48,9 @@ public class EatPills : MonoBehaviour {
 			if (changePath) {
 				pathOne.SetActive (true);
 				pathTwo.SetActive (false);
+			}
+			if (lastPill) {
+
 			}
 			if (player.GetComponent<HealthManager> ().getHealth () >= 70) {
 				player.GetComponent<StabilityManager> ().gainStability (30);
