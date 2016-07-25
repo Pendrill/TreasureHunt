@@ -7,15 +7,16 @@ public class StabilityManager : MonoBehaviour {
 	public int currentStability;
 	public int maxStability;
 	public int minStability;
+	public int startingStability;
 	public Text sanity;
 	// Use this for initialization
 	void Start () {
-		currentStability = maxStability;
+		currentStability = startingStability;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		sanity.text = "Sanity:  " + currentStability;
+		sanity.text = "Sanity:  " + currentStability + "%";
 	}
 	public void loseStability (int damage){
 		currentStability -= damage;

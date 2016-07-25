@@ -7,16 +7,17 @@ public class HealthManager : MonoBehaviour {
 	public int currentHealth;
 	public int maxHealth;
 	public int minHealth;
+	public int startingHealth;
 	public Text Health;
 
 	// Use this for initialization
 	void Start () {
-		currentHealth = maxHealth;
+		currentHealth = startingHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Health.text = "Health: " + currentHealth;
+		Health.text = "Health: " + currentHealth + "%";
 	}
 	public void DamageDone(int damage){
 		currentHealth -= damage;
