@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class EatPills : MonoBehaviour {
 	public GameObject ignoreThePills;
 	public GameObject panelUI;
@@ -13,6 +13,8 @@ public class EatPills : MonoBehaviour {
 	public GameObject pathOne;
 	public GameObject pathTwo;
 	public bool lastPill = false;
+	public GameObject Sheep;
+
 	//The amount of stability the player can regain will be determined by their current health.
 	void OnTriggerEnter2D(Collider2D player){
 		if (player.GetComponent<MoveBullet> () != null) {
@@ -38,6 +40,10 @@ public class EatPills : MonoBehaviour {
 		}
 	}
 	void OnTriggerStay2D(Collider2D player){
+		if (lastPill) {
+			Debug.Log ("Hello");
+			Sheep.SetActive (true);
+		}
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("You are pressing SPACE");
 			//Destroy (ignoreThePills.gameObject);
@@ -50,7 +56,7 @@ public class EatPills : MonoBehaviour {
 				pathTwo.SetActive (false);
 			}
 			if (lastPill) {
-
+				SceneManager.LoadScene (5);
 			}
 			if (player.GetComponent<HealthManager> ().getHealth () >= 70) {
 				player.GetComponent<StabilityManager> ().gainStability (30);

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour {
 
 	// Use this for initialization
@@ -10,6 +10,8 @@ public class GameOverScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKey (KeyCode.R)) {
+			SceneManager.LoadScene (0);
+		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class HealthManager : MonoBehaviour {
 
 	public int currentHealth;
@@ -24,7 +24,7 @@ public class HealthManager : MonoBehaviour {
 		currentHealth = Mathf.Clamp (currentHealth, minHealth, maxHealth);
 		if (currentHealth <= minHealth) {
 			Health.text = "Health: " + currentHealth;
-			Destroy (gameObject);
+			SceneManager.LoadScene (4);
 			//The destroy call is only temporary. What would be best is to have sme sort of death animation, that once done, would bring up a game over screen.
 
 		}

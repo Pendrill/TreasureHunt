@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class StabilityManager : MonoBehaviour {
 
 	public int currentStability;
@@ -22,7 +22,7 @@ public class StabilityManager : MonoBehaviour {
 		currentStability -= damage;
 		currentStability = Mathf.Clamp (currentStability, minStability, maxStability);
 		if (currentStability <= 0) {
-			Destroy (gameObject);
+			SceneManager.LoadScene (3);
 			//Same as with the health, we wouldn't want to actually destroy the object, but rather set off an animation that would then lead to the gameover screen.
 		}
 
