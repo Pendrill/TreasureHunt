@@ -27,6 +27,7 @@ public class StabilityManager : MonoBehaviour {
 
 	}
 	public void gainStability (int health){
+		Debug.Log ("HI");
 		currentStability += health;
 		currentStability = Mathf.Clamp (currentStability, minStability, maxStability);
 	}
