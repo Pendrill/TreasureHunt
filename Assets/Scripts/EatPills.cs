@@ -25,17 +25,20 @@ public class EatPills : MonoBehaviour {
 			textUI.text = message;
 			if (Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log ("working?");
-			if (player.GetComponent<HealthManager> ().getHealth () >= 70) {
+				if (player.GetComponent<HealthManager> ().getHealth () >= 70) {
 				player.GetComponent<StabilityManager> ().gainStability (30);
-			} else if (player.GetComponent<HealthManager> ().getHealth () >= 50) {
+				} else if (player.GetComponent<HealthManager> ().getHealth () >= 50) {
 				player.GetComponent<StabilityManager> ().gainStability (15);
-			} else if (player.GetComponent<HealthManager> ().getHealth () >= 25) {
+				} else if (player.GetComponent<HealthManager> ().getHealth () >= 25) {
 				player.GetComponent<StabilityManager> ().gainStability (5);
-			} else {
+				} else {
 				player.GetComponent<StabilityManager> ().gainStability (1);
+				}
+			
+
+		
+				Destroy (this.gameObject);
 			}
-			Destroy (this.gameObject);
-		}
 
 		}
 	}
@@ -67,6 +70,7 @@ public class EatPills : MonoBehaviour {
 			} else {
 				player.GetComponent<StabilityManager> ().gainStability (1);
 			}
+			player.GetComponent<EatSound> ().takePill ();
 			Destroy (this.gameObject);
 			Destroy (ignoreThePills.gameObject);
 			panelUI.SetActive (false);
